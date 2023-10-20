@@ -1,4 +1,3 @@
-word={}
 def ask_for_input():
     while True:
         guess = str(input("Guess a letter!"))
