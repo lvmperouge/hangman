@@ -6,7 +6,6 @@ class Hangman():
         self.word=random.choice(word_list)
         self.word_guessed=["_"]*len(self.word)
         self.num_letters=len(set(self.word)) 
-        #numpy.unique() returns the number of unique elements in a list 
         self.num_lives=num_lives
         self.list_of_guesses=[]
     
@@ -34,7 +33,8 @@ class Hangman():
             else: 
                 self.check_guess(guess)
                 self.list_of_guesses.append(guess)
-            pass
+                break
+            
             
 
 def play_game(word_list):
