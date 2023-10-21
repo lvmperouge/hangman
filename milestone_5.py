@@ -1,11 +1,11 @@
 import random
 word_list = ["mango", "grape", "coconut", "strawberry", "tomato"]
 class Hangman():
-    def __init__(self, word_list, num_lives):
+    def __init__(self, word_list, num_lives=5):
         self.word_list=word_list
         self.word=random.choice(word_list)
         self.word_guessed=["_"]*len(self.word)
-        self.num_letters=len(set(self.word))
+        self.num_letters=len(set(self.word)) 
         #numpy.unique() returns the number of unique elements in a list 
         self.num_lives=num_lives
         self.list_of_guesses=[]
@@ -14,7 +14,7 @@ class Hangman():
         guess = guess.lower()    
         if guess in self.word: 
             print("Good guess, ", guess, "is in the word!")
-            for i in len(self.word):
+            for i in range(len(self.word)):
                 if guess == self.word[i]: 
                     self.word_guessed[i] = guess
             self.num_letters = self.num_letters-1
@@ -36,3 +36,18 @@ class Hangman():
                 self.list_of_guesses.append(guess)
             pass
             
+
+def play_game(word_list):
+    num_lives=5
+    game = Hangman(word_list, num_lives)
+    while True:
+        if num_lives==0:
+            print ("You lost!")
+            break
+        if game.num_letters>0: 
+            game.ask_for_input()
+            continue
+        if num_lives!=0 and game.num_letters==0:
+            print("Congratulations. You won the game!")
+            break
+play_game(word_list)

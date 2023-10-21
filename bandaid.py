@@ -1,2 +1,2 @@
-bandaid="abcdef"
-print(bandaid[2])
+word=["_"]*6
+print(word)
